@@ -1,3 +1,23 @@
+
+<!-- Rewrite -->
+
+
+
+
+
+
+
+# References
+
+- [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/)
+- [kubectl reference](https://kubernetes.io/docs/reference/kubectl/generated/)
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+<!--Original content from Spectro -->
+
 # Debug Operations in Kubernetes
 
 Kubernetes contains several commands, sometimes we can use these commands to do things. A good command to know is kubectl get pods which is used to get a list of all pods that are available and what their status is. Just rememember that when you use this command tat you may have to specify the `namespace`.
