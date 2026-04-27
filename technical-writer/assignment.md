@@ -3,11 +3,11 @@
 
 This topic discusses Kubernetes commands that you can use to debug a Kubernetes cluster. You issue these commands from ``kubectl``, which is the command-line interface (CLI) that interacts with a Kubernetes cluster.  The CLI sends your requests to the Kubernetes API server to perform operations on the cluster.
 
-## List all pods 
+## List All Pods 
 
 Most debugging sessions begin by issuing the ``kubectl get`` command to list the pods in the cluster. The output lists the status of the pods, which helps you identify which pod to investigate. 
 
-To list the pods in the current namespace, issue the following command:
+To list pods, issue the following command:
 
 ```shell
 kubectl get pods
@@ -41,7 +41,7 @@ kubectl config set-context --current --namespace=spectro-sandbox
 
 :::
 
-## List logs for a container
+## List Logs for a Container
 
 After determining which pod you want to debug, you can use the ``kubectl logs`` command to print the logs for a container in that pod. If a pod contains a single container, you do not need to include the ``-c`` option to specify a container.
 
@@ -70,9 +70,9 @@ kubectl logs spectro-nginx1
 2026/04/26 14:38:08 [notice] 1#1: start worker process 29
 ```
 
-## Issue commands in a container
+## Issue Commands in a Container
 
-You can use the ``kubectl exec`` command to issue commands in a container. For example, you can issue a command that lists the logs of the application in the container. This lets you debug the container from the inside, such as reviewing log files or configurations, and explore the environment of the container itself.
+You can use the ``kubectl exec`` command to issue commands in a container. For example, you can issue a command that lists the logs of the application in the container. This lets you debug the container from the inside (for example, reviewing log files or configurations) and explore the environment of the container itself.
 
 **Example**: Issue the `date` LINUX command in the first container of the `spectro-nginx1` pod:
 
