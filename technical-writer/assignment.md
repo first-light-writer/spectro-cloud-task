@@ -18,7 +18,6 @@ But if you change the namespace context to be ``spectro-sandbox``, then you can 
 ```shell
 kubectl get pods 
 ```
-:::
 
 In this example, issue the following command to change the namespace context:
 
@@ -31,7 +30,7 @@ kubectl config set-context --current --namespace=spectro-sandbox
 
 ## List all pods 
 
-Most debugging sessions begin by issuing the ``kubectl get`` command to list the pods in the cluster. The output lists the status of the pods, which can help you determine which pod you want to investigate. 
+Most debugging sessions begin by issuing the ``kubectl get`` command to list the pods in the cluster. The output lists the status of the pods, which helps you identify which pod to investigate. 
 
 To list the pods in the current namespace, issue the following command:
 
@@ -50,9 +49,9 @@ The output lists the three pods in the current namespace of the cluster. The rem
 
 ## List logs for a container
 
-After determining which pod you want to debug, you can use the ``kubectl logs`` command to print the logs for a container in that pod. The output lists the status of the pods, which helps you identify which pod to investigate. If a pod contains a single container, you do not need to include the ``-c`` option to specify a container.
+After determining which pod you want to debug, you can use the ``kubectl logs`` command to print the logs for a container in that pod. If a pod contains a single container, you do not need to include the ``-c`` option to specify a container.
 
-Example: List the logs for the container in the ``spectro-nginx1`` pod:
+**Example**: List the logs for the container in the ``spectro-nginx1`` pod:
 
 ```shell
 kubectl logs spectro-nginx1
@@ -81,7 +80,7 @@ kubectl logs spectro-nginx1
 
 You can use the ``kubectl exec`` command to issue commands in a container. For example, you can issue a command that lists the logs of the application in the container. This lets you debug the container from the inside, such as reviewing log files or configurations, and explore the environment of the container itself.
 
-Example: Issue the `date` LINUX command in the first container of the `spectro-nginx1` pod:
+**Example**: Issue the `date` LINUX command in the first container of the `spectro-nginx1` pod:
 
 ```shell
 kubectl exec spectro-nginx1 -- date
@@ -90,7 +89,7 @@ kubectl exec spectro-nginx1 -- date
 ```shell
 Sun Apr 26 14:49:39 UTC 2026
 ```
-Example: Open the log file for the NGINX web server in the first container of the `spectro-nginx1` pod:
+**Example**: Open the log file for the NGINX web server in the first container of the `spectro-nginx1` pod:
 
 ```shell
 kubectl exec spectro-nginx1 -- nginx -s reopen
