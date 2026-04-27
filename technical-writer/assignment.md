@@ -3,31 +3,6 @@
 
 This topic discusses Kubernetes commands that you can use to debug a Kubernetes cluster. You issue these commands from ``kubectl``, which is the command-line interface (CLI) that interacts with a Kubernetes cluster.  The CLI sends your requests to the Kubernetes API server to perform operations on the cluster.
 
-:::tip
-
-A Kubernetes cluster uses namespaces to logically group pods and other resources. When you issue ``kubectl`` commands, the CLI assumes that the resources are located in the current namespace. To debug pods in a different namespace, change the namespace context so you don't have to specify it repeatedly. 
-
-For example, suppose you wanted to list pods in the ``spectro-sandbox`` namespace, which is not the current namespace. You would have to use the ``-n`` option to specify the namespace.
-
-```shell
-kubectl get pods -n spectro-sandbox
-```
-
-But if you change the namespace context to be ``spectro-sandbox``, then you can simply issue:
-
-```shell
-kubectl get pods 
-```
-
-In this example, issue the following command to change the namespace context:
-
-
-```shell
-kubectl config set-context --current --namespace=spectro-sandbox
-```
-
-:::
-
 ## List all pods 
 
 Most debugging sessions begin by issuing the ``kubectl get`` command to list the pods in the cluster. The output lists the status of the pods, which helps you identify which pod to investigate. 
@@ -46,6 +21,25 @@ spectro-nginx3   1/1     Running   1 (51s ago)   24h
 ```
 
 The output lists the three pods in the current namespace of the cluster. The remaining examples in this topic use commands to debug the `spectro-nginx1` pod.
+
+:::tip
+
+A Kubernetes cluster uses namespaces to logically group pods and other resources. When you issue ``kubectl`` commands, the CLI assumes that the resources are located in the current namespace. If the resources are in a different namespace, you must include the ``--namespace`` option when issuing a command.
+
+For example, suppose you wanted to list pods in the ``spectro-sandbox`` namespace, which is not the current namespace. You would issue the following command:
+
+```shell
+kubectl get pods --namespace spectro-sandbox
+```
+
+If you did not want to specify the ``--namespace`` option every time you issued a command, you could use the ``kubectl config set-context`` command to change the current namespace. For example:
+
+
+```shell
+kubectl config set-context --current --namespace=spectro-sandbox
+```
+
+:::
 
 ## List logs for a container
 
@@ -89,6 +83,7 @@ kubectl exec spectro-nginx1 -- date
 ```shell
 Sun Apr 26 14:49:39 UTC 2026
 ```
+
 **Example**: Open the log file for the NGINX web server in the first container of the `spectro-nginx1` pod:
 
 ```shell
